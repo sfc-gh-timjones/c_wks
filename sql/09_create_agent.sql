@@ -1,22 +1,6 @@
 -- =============================================================================
 -- 09: CORTEX AGENT
 -- WKS Restaurant Group SI Demo
---
--- Creates WKS_AGENT and registers it with Snowflake Intelligence so it
--- appears in the CoWork UI.
---
--- Tools:
---   Analyst    — Cortex Analyst text-to-SQL over WKS_SEMANTIC_VIEW
---   HRSearch   — Cortex Search over HR policies and brand standards
---   data_to_chart — Renders query results as charts
---   SendEmail  — Calls WKS_SEND_EMAIL stored procedure
---
--- CRITICAL SYNTAX NOTES:
---   - Use FROM SPECIFICATION (not AGENT_SPECIFICATION) for SI UI visibility
---   - Model name uses dashes: claude-sonnet-4-6
---   - Every tool_spec requires a description: field
---   - execution_environment is required under Analyst tool_resources
---   - After CREATE: ALTER SNOWFLAKE INTELLIGENCE ... ADD AGENT ...
 -- =============================================================================
 
 USE DATABASE CUSTOMER_DEMOS;
@@ -61,16 +45,16 @@ instructions:
     brand and region labels much easier to read.
 
   sample_questions:
-    - "What are the top 10 restaurants by weekly sales?"
-    - "How are weekly sales trending by brand over the last 13 weeks?"
-    - "Which brand has the highest turnover rate this year?"
-    - "Show me current headcount by brand as a horizontal bar chart"
-    - "What is our week-over-week sales change by region?"
-    - "What does the WKS attendance policy say about calling out?"
-    - "What is the average check size by brand?"
-    - "Show me monthly turnover trends for Wendy's over the last 6 months"
-    - "Which states have the highest quarterly sales?"
-    - "Email me a weekly sales summary to t.jones@snowflake.com"
+    - question: "What are the top 10 restaurants by weekly sales?"
+    - question: "How are weekly sales trending by brand over the last 13 weeks?"
+    - question: "Which brand has the highest turnover rate this year?"
+    - question: "Show me current headcount by brand as a horizontal bar chart"
+    - question: "What is our week-over-week sales change by region?"
+    - question: "What does the WKS attendance policy say about calling out?"
+    - question: "What is the average check size by brand?"
+    - question: "Which brand is growing sales while also losing the most people?"
+    - question: "Which states have the highest quarterly sales?"
+    - question: "Email me a weekly sales summary to demo@example.com"
 
 tools:
   - tool_spec:
@@ -110,8 +94,8 @@ tool_resources:
       warehouse: WKS_WH
 
   HRSearch:
-    name: "CUSTOMER_DEMOS.WKS.WKS_HR_SEARCH"
-    max_results: "10"
+    search_service: "CUSTOMER_DEMOS.WKS.WKS_HR_SEARCH"
+    max_results: 10
     title_column: "TITLE"
     id_column: "DOC_ID"
 
@@ -121,8 +105,7 @@ tool_resources:
     execution_environment:
       type: warehouse
       warehouse: WKS_WH
-$$
-PROFILE = '{"display_name": "WKS Assistant", "color": "blue"}';
+$$;
 
 -- Register with Snowflake Intelligence (makes it appear in CoWork UI)
 ALTER SNOWFLAKE INTELLIGENCE SNOWFLAKE_INTELLIGENCE_OBJECT_DEFAULT
