@@ -1,0 +1,15 @@
+# Snowflake Gitignore
+.snowflake/
+.DS_Store
+*.pyc
+__pycache__/
+
+# Node / Next.js
+react-app/node_modules/
+react-app/.next/
+react-app/.env.local
+react-app/.env*.local
+
+# Build artifacts
+*.tgz
+dist/
