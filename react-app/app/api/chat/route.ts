@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 
 const SF_HOST = process.env.SNOWFLAKE_HOST || process.env.SF_HOST || "";
-const AGENT_FQN = "CUSTOMER_DEMOS.WKS.WKS_AGENT";
+const AGENT_URL = `https://${SF_HOST}/api/v2/databases/CUSTOMER_DEMOS/schemas/WKS/agents/WKS_AGENT:run`;
 
 function getToken(): string {
   if (process.env.SF_TOKEN) return process.env.SF_TOKEN;
@@ -17,9 +17,7 @@ export async function POST(req: NextRequest) {
   const { messages } = await req.json();
   const token = getToken();
 
-  const url = `https://${SF_HOST}/api/v2/agent/deployments/${encodeURIComponent(AGENT_FQN)}/completions`;
-
-  const agentRes = await fetch(url, {
+  const agentRes = await fetch(AGENT_URL, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
