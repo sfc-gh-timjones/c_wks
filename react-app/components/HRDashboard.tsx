@@ -50,7 +50,7 @@ export default function HRDashboard() {
       });
   }, []);
 
-  const latestMonth = [...new Set(hrData.map((r) => r.YEAR_MONTH))].sort().slice(-1)[0];
+  const latestMonth = Array.from(new Set(hrData.map((r) => r.YEAR_MONTH))).sort().slice(-1)[0];
   const latestRows  = hrData.filter((r) => r.YEAR_MONTH === latestMonth);
   const totalHC     = latestRows.reduce((s, r) => s + r.ENDING_HEADCOUNT, 0);
   const totalHires  = latestRows.reduce((s, r) => s + r.HIRES, 0);

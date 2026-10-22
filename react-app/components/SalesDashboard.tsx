@@ -74,7 +74,7 @@ export default function SalesDashboard() {
     });
   }, []);
 
-  const weeks      = [...new Set(weekly.map((r) => r.WEEK_START_DATE))].sort();
+  const weeks      = Array.from(new Set(weekly.map((r) => r.WEEK_START_DATE))).sort();
   const latestWeek = weeks.slice(-1)[0];
   const last4weeks = weeks.slice(-4);
   const last4Rows  = weekly.filter((r) => last4weeks.includes(r.WEEK_START_DATE));
