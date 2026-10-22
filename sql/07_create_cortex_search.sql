@@ -151,7 +151,7 @@ Your District Manager is your escalation point for operational questions, safety
 
 -- ── Brand Operating Standards ────────────────────────────────────────────────
 
-('[Sample] Wendy'''s Quality and Service Standards', 'BRAND_STANDARDS', 'Wendy''s',
+('[Sample] Wendy''s Quality and Service Standards', 'BRAND_STANDARDS', 'Wendy''s',
 'QUALITY IS OUR RECIPE
 At Wendy''s, Dave Thomas'' founding principle was simple: fresh, never-frozen beef and ingredients you can see. WKS upholds this commitment at every location.
 
@@ -170,7 +170,7 @@ WEEKLY SALES METRICS
 District leaders review the following at every restaurant visit: weekly sales vs. prior year, average check, drive-thru speed, and customer satisfaction scores. These metrics flow into the WKS data platform from Wendy''s POS and are available in Snowflake Intelligence.',
 '2025-05-01'),
 
-('[Sample] Denny'''s Guest Experience Guidelines', 'BRAND_STANDARDS', 'Denny''s',
+('[Sample] Denny''s Guest Experience Guidelines', 'BRAND_STANDARDS', 'Denny''s',
 'AMERICA''S DINER — EVERY GUEST, EVERY TIME
 Denny''s has been serving guests around the clock for over 60 years. Our team members create experiences that make guests feel welcome, seen, and satisfied.
 
